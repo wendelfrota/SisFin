@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +12,6 @@ namespace Dados
 
         public void Adicionar(Cliente cliente)
         {
-            // Aqui você poderia inserir o cliente em um banco de dados
-            // Para simplificar, estamos apenas adicionando a uma lista em memória
             _clientes.Add(cliente);
         }
 

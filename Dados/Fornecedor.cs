@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dados
 {
-    public class Cliente
+    public class Fornecedor
+
     { 
         private int id { get; set; }
-		private TipoPessoa tipoCliente { get; set; }
+		private TipoPessoa tipoFornecedor { get; set; }
 		private String cpf_cnpj { get; set; }
-		private String razaoSocial { get; set; }
-		private DateTime dataNascimento { get; set; }
+		private String razao_social { get; set; }
 		private String nome { get; set; }
 		private String rua { get; set; }
 		private int numero { get; set; }
@@ -21,17 +21,15 @@ namespace Dados
 		private String complemento { get; set; }
 		private String cep { get; set; }
 		private String telefone { get; set; }
-		private String email { get; set; }
 		private String celular { get; set; }
-		private decimal limite { get; set; }
+		private String email { get; set; }
 
-        public Cliente(int id, TipoPessoa tipoCliente, string cpf_cnpj, string razaoSocial, DateTime dataNascimento, string nome, string rua, int numero, string bairro, string cidade, string complemento, string cep, string telefone, string email, string celular, decimal limite)
+        public Fornecedor(int id, TipoPessoa tipoFornecedor, string cpf_cnpj, string razao_social, string nome, string rua, int numero, string bairro, string cidade, string complemento, string cep, string telefone, string celular, string email)
         {
             this.id = id;
-            this.tipoCliente = tipoCliente;
+            this.tipoFornecedor = tipoFornecedor;
             this.cpf_cnpj = cpf_cnpj;
-            this.razaoSocial = razaoSocial;
-            this.dataNascimento = dataNascimento;
+            this.razao_social = razao_social;
             this.nome = nome;
             this.rua = rua;
             this.numero = numero;
@@ -40,9 +38,8 @@ namespace Dados
             this.complemento = complemento;
             this.cep = cep;
             this.telefone = telefone;
-            this.email = email;
             this.celular = celular;
-            this.limite = limite;
+            this.email = email;
         }
     }
 }

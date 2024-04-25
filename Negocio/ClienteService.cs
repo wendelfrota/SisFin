@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,21 +16,11 @@ namespace Negocio
             _repository = new ClienteRepository();
         }
 
-        public void CadastrarCliente(int id, TipoPessoa tipoPessoa, string nome, string email)
+        public void CadastrarCliente(int id, TipoPessoa tipoCliente, String cpf_cnpj, String razaoSocial, DateTime dataNascimento, String nome, String rua, int numero, String bairro, String cidade, String complemento, String cep, String telefone, String email, String celular, decimal limite)
         {
-            // Insira as validações e regras de negócio aqui
-            // Por exemplo, verificar se o email já está cadastrado
-
-            var cliente = new Cliente
-            {
-                Id = id,
-                tipoPessoa = tipoPessoa,
-                Nome = nome,
-                Email = email
-            };
+            var cliente = new Cliente(id, tipoCliente, cpf_cnpj, razaoSocial, dataNascimento, nome, rua, numero, bairro, cidade, complemento, cep, telefone, email, celular, limite);
 
             _repository.Adicionar(cliente);
-
         }
 
         public IEnumerable<Cliente> ObterTodos()

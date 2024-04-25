@@ -41,8 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaixaService.cs" />
+    <Compile Include="CategoriaService.cs" />
     <Compile Include="ClienteService.cs" />
+    <Compile Include="CompraService.cs" />
+    <Compile Include="ContaPagarService.cs" />
+    <Compile Include="ContaReceberService.cs" />
+    <Compile Include="ContaService.cs" />
+    <Compile Include="ControleCaixaService.cs" />
+    <Compile Include="FornecedorService.cs" />
+    <Compile Include="ItemCompraService.cs" />
+    <Compile Include="ItemVendaService.cs" />
+    <Compile Include="ProdutoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VendaService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dados\Dados.csproj">
