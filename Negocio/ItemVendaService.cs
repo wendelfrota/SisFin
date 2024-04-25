@@ -18,7 +18,12 @@ namespace Negocio
 
         public void CadastrarItemVenda(int quantidade, decimal preco, decimal desconto)
         {
-            var itemvenda = new ItemVenda(quantidade, preco, desconto);
+            var itemvenda = new ItemVenda
+            {
+                Quantidade = quantidade,
+                Preco = preco,  
+                Desconto = desconto
+            };
 
             _repository.Adicionar(itemvenda);
         }

@@ -9,15 +9,8 @@ namespace Dados
     public class Produto
 
     { 
-        private int id { get; set; }
-		private String nome { get; set; }
-		private decimal preco { get; set; }
-
-        public Produto(int id, string nome, decimal preco)
-        {
-            this.id = id;
-            this.nome = nome;
-            this.preco = preco;
-        }
+        public int Id { get; set; }
+		public String Nome { get; set; }
+        public decimal Preco { get; set; } 
     }
 }

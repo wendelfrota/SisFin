@@ -8,16 +8,9 @@ namespace Dados
 {
     public class ControleCaixa
 
-    { 
-        private int id { get; set; }
-		private decimal valor { get; set; }
-		private DateTime data { get; set; }
-
-        public ControleCaixa(int id, decimal valor, DateTime data)
-        {
-            this.id = id;
-            this.valor = valor;
-            this.data = data;
-        }
+    {
+        public int Id { get; set; }
+        public decimal Valor { get; set; }
+        public DateTime Data { get; set; } 
     }
 }

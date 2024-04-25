@@ -18,7 +18,17 @@ namespace Negocio
 
         public void CadastrarContaPagar(int id, decimal valor, DateTime dataCadastro, DateTime dataVencimento, DateTime dataPagamento, MeioPagamento meioPagamento, EstadoPagamento situacao)
         {
-            var contapagar = new ContaPagar(id, valor, dataCadastro, dataVencimento, dataPagamento, meioPagamento, situacao);
+            var contapagar = new ContaPagar
+            {
+                Id = id,
+                Valor = valor,  
+                DataCadastro = dataCadastro,
+                DataPagamento = dataPagamento,
+                DataVencimento = dataVencimento,
+                MeioPagamento = meioPagamento,
+                Situacao = situacao
+            };
+
 
             _repository.Adicionar(contapagar);
         }

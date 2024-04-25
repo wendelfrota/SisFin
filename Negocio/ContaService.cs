@@ -18,7 +18,13 @@ namespace Negocio
 
         public void CadastrarConta(int id, String descricao, TipoConta tipo, bool status)
         {
-            var conta = new Conta(id, descricao, tipo, status);
+            var conta = new Conta
+            {
+                Id = id,
+                Descricao = descricao,  
+                Status = status,
+                Tipo = tipo
+            };
 
             _repository.Adicionar(conta);
         }

@@ -18,7 +18,11 @@ namespace Negocio
 
         public void CadastrarControleCaixa(int id, decimal valor, DateTime data)
         {
-            var controlecaixa = new ControleCaixa(id, valor, data);
+            var controlecaixa = new ControleCaixa { 
+                Id = id,
+                Valor = valor,  
+                Data = data
+            };
 
             _repository.Adicionar(controlecaixa);
         }

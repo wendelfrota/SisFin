@@ -8,14 +8,8 @@ namespace Dados
 {
     public class ItemCompra
 
-    { 
-        private int quantidade { get; set; }
-		private decimal preco { get; set; }
-
-        public ItemCompra(int quantidade, decimal preco)
-        {
-            this.quantidade = quantidade;
-            this.preco = preco;
-        }
+    {
+        public int Quantidade { get; set; }
+        public decimal Preco { get; set; } 
     }
 }

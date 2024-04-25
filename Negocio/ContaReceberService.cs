@@ -18,7 +18,17 @@ namespace Negocio
 
         public void CadastrarContaReceber(int id, decimal valor, DateTime dataCadastro, DateTime dataVencimento, DateTime dataRecebimento, decimal valorRecebido, MeioPagamento meioPagamento, EstadoPagamento situacao)
         {
-            var contareceber = new ContaReceber(id, valor, dataCadastro, dataVencimento, dataRecebimento, valorRecebido, meioPagamento, situacao);
+            var contareceber = new ContaReceber
+            {
+                Id = id,
+                MeioPagamento = meioPagamento,
+                DataVencimento = dataVencimento,
+                DataCadastro = dataCadastro,
+                DataRecebimento = dataRecebimento,
+                ValorRecebido = valorRecebido,
+                Valor = valor,
+                Situacao = situacao
+            };
 
             _repository.Adicionar(contareceber);
         }

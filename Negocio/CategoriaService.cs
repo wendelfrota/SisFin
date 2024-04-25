@@ -18,7 +18,11 @@ namespace Negocio
 
         public void CadastrarCategoria(int id, String nome)
         {
-            var categoria = new Categoria(id, nome);
+            var categoria = new Categoria 
+            { 
+                Id = id,
+                Nome = nome
+            };
 
             _repository.Adicionar(categoria);
         }

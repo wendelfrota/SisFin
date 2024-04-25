@@ -18,7 +18,14 @@ namespace Negocio
 
         public void CadastrarVenda(int id, DateTime instante, String descricao, double desconto, double valor_total)
         {
-            var venda = new Venda(id, instante, descricao, desconto, valor_total);
+            var venda = new Venda
+            {
+                Id = id,
+                Instante = instante,
+                Descricao = descricao,
+                Desconto = desconto,
+                Valor_total = valor_total
+            };
 
             _repository.Adicionar(venda);
         }

@@ -18,7 +18,11 @@ namespace Negocio
 
         public void CadastrarCaixa(int id, String nome)
         {
-            var caixa = new Caixa(id, nome);
+            var caixa = new Caixa 
+            { 
+                Id = id,
+                Nome = nome
+            };
 
             _repository.Adicionar(caixa);
         }

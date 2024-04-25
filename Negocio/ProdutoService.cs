@@ -18,7 +18,12 @@ namespace Negocio
 
         public void CadastrarProduto(int id, String nome, decimal preco)
         {
-            var produto = new Produto(id, nome,  preco);
+            var produto = new Produto
+            {
+                Id = id,
+                Nome = nome,    
+                Preco = preco
+            };
 
             _repository.Adicionar(produto);
         }

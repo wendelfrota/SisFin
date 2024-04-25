@@ -18,7 +18,25 @@ namespace Negocio
 
         public void CadastrarCliente(int id, TipoPessoa tipoCliente, String cpf_cnpj, String razaoSocial, DateTime dataNascimento, String nome, String rua, int numero, String bairro, String cidade, String complemento, String cep, String telefone, String email, String celular, decimal limite)
         {
-            var cliente = new Cliente(id, tipoCliente, cpf_cnpj, razaoSocial, dataNascimento, nome, rua, numero, bairro, cidade, complemento, cep, telefone, email, celular, limite);
+            var cliente = new Cliente
+            {
+                Id = id,
+                TipoCliente = tipoCliente,
+                Cpf_cnpj = cpf_cnpj,
+                RazaoSocial = razaoSocial,
+                DataNascimento = dataNascimento,
+                Nome = nome,    
+                Rua = rua,
+                Numero = numero,
+                Bairro = bairro,
+                Cidade = cidade,
+                Complemento = complemento,
+                CEP = cep,
+                Telefone = telefone,
+                Email = email,
+                Celular = celular,
+                Limite = limite
+            };
 
             _repository.Adicionar(cliente);
         }
