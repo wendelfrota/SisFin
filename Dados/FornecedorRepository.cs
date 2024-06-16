@@ -83,12 +83,14 @@ namespace Dados
                 SqlCmd.Parameters.AddWithValue("pTelefone", fornecedor.Telefone);
                 SqlCmd.Parameters.AddWithValue("pCelular", fornecedor.Celular);
                 SqlCmd.Parameters.AddWithValue("pEmail", fornecedor.Email);
+                SqlCmd.Parameters.AddWithValue("pId", fornecedor.Id);
 
                 //executa o stored procedure
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "SUCESSO" : "FALHA";
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 resp = ex.Message;
             }
             finally
