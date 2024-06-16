@@ -85,9 +85,6 @@ namespace Apresentacao
 
         private void frmFornecedor_Load(object sender, System.EventArgs e)
         {
-            radioPessoaFisica.Text = TipoPessoa.PESSOA_FISICA.ToString();
-            radioPessoaJuridica.Text = TipoPessoa.PESSOA_JURIDICA.ToString();
-
             dgFornecedor.ColumnCount = 4;
             dgFornecedor.AutoGenerateColumns = false;
             dgFornecedor.Columns[0].Width = 26;
@@ -152,6 +149,7 @@ namespace Apresentacao
             int id;
             TipoPessoa tipoFornecedor;
             string cpf_cnpj;
+            string razao_social;
             string nome;
             string rua; 
             int numero; 
@@ -170,24 +168,32 @@ namespace Apresentacao
             else
                 id = Convert.ToInt32(txtId.Text);
 
-            tipoFornecedor = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
-            cpf_cnpj = txtCpfCnpj.Text;
-            nome = txtNome.Text;
-            rua = txtRua.Text;
-            numero = Convert.ToInt32(txtNum.Text);
-            bairro = txtBairro.Text;
-            cidade = txtCidade.Text;
-            complemento = txtComplemento.Text;
-            cep = txtCep.Text;
-            telefone = txtTelefone.Text;
-            celular = txtCelular.Text;
-            email = txtEmail.Text;
+            try
+            {
+                tipoFornecedor = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
+                cpf_cnpj = txtCpfCnpj.Text;
+                razao_social = txtRazaoSocial.Text;
+                nome = txtNome.Text;
+                rua = txtRua.Text;
+                numero = Convert.ToInt32(txtNum.Text);
+                bairro = txtBairro.Text;
+                cidade = txtCidade.Text;
+                complemento = txtComplemento.Text;
+                cep = txtCep.Text;
+                telefone = txtTelefone.Text;
+                celular = txtCelular.Text;
+                email = txtEmail.Text;
+            }
+            catch
+            {
+                throw new Exception("Campo inválido");
+            }
 
 
             if (modo == 1)
             {
                 resultado = _fornecedorService.Update(
-                    id, tipoFornecedor, cpf_cnpj, nome, rua,
+                    id, tipoFornecedor, cpf_cnpj, razao_social, nome, rua,
                     numero, bairro, cidade, complemento, cep,
                     telefone, celular, email, true
                     );
@@ -206,8 +212,12 @@ namespace Apresentacao
             }
             else if (modo == 2)
             {
-                resultado = _fornecedorService.Update(1, tipoFornecedor, nome, email, null, 1, null, null, null, null, null, null, null, true);
-                
+                resultado = _fornecedorService.Update(
+                    id, tipoFornecedor, cpf_cnpj, razao_social, nome, rua,
+                    numero, bairro, cidade, complemento, cep,
+                    telefone, celular, email, false
+                    );
+
                 if (resultado == "SUCESSO")
                 {
                     msg = "FORNECEDOR atualizado com sucesso!";

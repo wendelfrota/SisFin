@@ -19,7 +19,7 @@ namespace Negocio
         }
 
         public string Update(
-            int id, TipoPessoa tipoFornecedor, String cpf_cnpj,
+            int id, TipoPessoa tipoFornecedor, String cpf_cnpj, string razao_social,
             String nome, String rua, int numero, String bairro,
             String cidade, String complemento, String cep,
             String telefone, String celular, String email, Boolean isNew)
@@ -33,6 +33,7 @@ namespace Negocio
                 Nome = nome,
                 Email = email,
                 Cpf_cnpj = cpf_cnpj,
+                Razao_social = razao_social,
                 Cidade = cidade,
                 Rua = rua,
                 Bairro = bairro,

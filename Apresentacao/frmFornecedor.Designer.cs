@@ -46,6 +46,7 @@ namespace Apresentacao
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtRazaoSocial = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.TextBox();
@@ -74,6 +75,7 @@ namespace Apresentacao
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgFornecedor)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -166,24 +168,24 @@ namespace Apresentacao
             // 
             this.radioPessoaJuridica.AutoSize = true;
             this.radioPessoaJuridica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioPessoaJuridica.Location = new System.Drawing.Point(320, 72);
+            this.radioPessoaJuridica.Location = new System.Drawing.Point(442, 70);
             this.radioPessoaJuridica.Name = "radioPessoaJuridica";
-            this.radioPessoaJuridica.Size = new System.Drawing.Size(138, 24);
+            this.radioPessoaJuridica.Size = new System.Drawing.Size(81, 24);
             this.radioPessoaJuridica.TabIndex = 13;
             this.radioPessoaJuridica.TabStop = true;
-            this.radioPessoaJuridica.Text = "Pessoa Jurídica";
+            this.radioPessoaJuridica.Text = "Jurídica";
             this.radioPessoaJuridica.UseVisualStyleBackColor = true;
             // 
             // radioPessoaFisica
             // 
             this.radioPessoaFisica.AutoSize = true;
             this.radioPessoaFisica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioPessoaFisica.Location = new System.Drawing.Point(119, 72);
+            this.radioPessoaFisica.Location = new System.Drawing.Point(368, 70);
             this.radioPessoaFisica.Name = "radioPessoaFisica";
-            this.radioPessoaFisica.Size = new System.Drawing.Size(125, 24);
+            this.radioPessoaFisica.Size = new System.Drawing.Size(68, 24);
             this.radioPessoaFisica.TabIndex = 12;
             this.radioPessoaFisica.TabStop = true;
-            this.radioPessoaFisica.Text = "Pessoa Física";
+            this.radioPessoaFisica.Text = "Física";
             this.radioPessoaFisica.UseVisualStyleBackColor = true;
             // 
             // txtEmail
@@ -255,6 +257,8 @@ namespace Apresentacao
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.txtRazaoSocial);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.txtCelular);
@@ -279,6 +283,14 @@ namespace Apresentacao
             this.tabPage1.Text = "Informações Gerais";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txtRazaoSocial
+            // 
+            this.txtRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRazaoSocial.Location = new System.Drawing.Point(119, 70);
+            this.txtRazaoSocial.Name = "txtRazaoSocial";
+            this.txtRazaoSocial.Size = new System.Drawing.Size(171, 26);
+            this.txtRazaoSocial.TabIndex = 19;
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -294,7 +306,7 @@ namespace Apresentacao
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(252, 99);
+            this.label7.Location = new System.Drawing.Point(252, 105);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 20);
             this.label7.TabIndex = 18;
@@ -303,7 +315,7 @@ namespace Apresentacao
             // txtCelular
             // 
             this.txtCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCelular.Location = new System.Drawing.Point(320, 96);
+            this.txtCelular.Location = new System.Drawing.Point(320, 102);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(203, 26);
             this.txtCelular.TabIndex = 15;
@@ -312,7 +324,7 @@ namespace Apresentacao
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 99);
+            this.label6.Location = new System.Drawing.Point(7, 105);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 20);
             this.label6.TabIndex = 16;
@@ -321,7 +333,7 @@ namespace Apresentacao
             // txtTelefone
             // 
             this.txtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefone.Location = new System.Drawing.Point(88, 96);
+            this.txtTelefone.Location = new System.Drawing.Point(88, 102);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(156, 26);
             this.txtTelefone.TabIndex = 14;
@@ -348,11 +360,11 @@ namespace Apresentacao
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 73);
+            this.label4.Location = new System.Drawing.Point(296, 72);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.Size = new System.Drawing.Size(66, 20);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Razão Social:";
+            this.label4.Text = "Pessoa:";
             // 
             // tabPage2
             // 
@@ -559,6 +571,16 @@ namespace Apresentacao
             this.label9.TabIndex = 19;
             this.label9.Text = "Nome:";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(6, 73);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(107, 20);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Razão Social:";
+            // 
             // frmFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,5 +657,7 @@ namespace Apresentacao
         private System.Windows.Forms.TextBox txtRua;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox txtRazaoSocial;
+        private System.Windows.Forms.Label label20;
     }
 }
