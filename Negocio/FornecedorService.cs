@@ -24,9 +24,7 @@ namespace Negocio
             String cidade, String complemento, String cep,
             String telefone, String celular, String email, Boolean isNew)
         {
-            // Insira as validações e regras de negócio aqui
-            // Por exemplo, verificar se o email já está cadastrado
-            var fornecedor = new Fornecedor
+                var fornecedor = new Fornecedor
             {
                 Id = id,
                 TipoFornecedor = tipoFornecedor,
@@ -44,6 +42,9 @@ namespace Negocio
                 Celular = celular
             };
 
+            if (!isValidFornecedor(fornecedor))
+                return "FALHA";
+
             if (isNew)
                 return _repository.Insert(fornecedor);
             else
@@ -53,19 +54,13 @@ namespace Negocio
 
         public string Insert(Fornecedor fornecedor)
         {
-            // Insira as validações e regras de negócio aqui
-            // Por exemplo, verificar se o email já está cadastrado
-
-            return _repository.Insert(fornecedor);
-
+            if (isValidFornecedor(fornecedor))
+                return _repository.Insert(fornecedor);
+            return "FALHA";
         }
         public string Remove(int idFornecedor)
         {
-            // Insira as validações e regras de negócio aqui
-            // Por exemplo, verificar se o email já está cadastrado
-
             return _repository.Remove(idFornecedor);
-
         }
 
         public DataTable getAll()
@@ -77,34 +72,35 @@ namespace Negocio
             return _repository.filterByName(nome);
         }
 
-        public DataTable getById(int id)
+        private bool isValidFornecedor(Fornecedor f)
         {
-            return _repository.getById(id);
+            if (!IsValidEmail(f.Email) || EmailExists(f.Email))
+                return false;
+            return true;
         }
 
-        public static Fornecedor fromDatatable(DataTable dt)
+        private bool EmailExists(string email)
         {
-            DataRow row = dt.Rows[0];
-            Fornecedor f = new Fornecedor
+            var fornecedores = _repository.getAll();
+
+            foreach (DataRow row in fornecedores.Rows)
+                if (row["Email"].ToString().Equals(email, StringComparison.OrdinalIgnoreCase))
+                    return true;
+                
+            return false;
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
             {
-                Id = Convert.ToInt32(row["Id"]),
-                TipoFornecedor = (TipoPessoa)row["TipoPessoa"],
-                Nome = Convert.ToString(row["Nome"]),
-                Email = Convert.ToString(row["Email"]),
-                Cpf_cnpj = Convert.ToString(row["Cpf_cnpj"]),
-                Razao_social = Convert.ToString(row["Razao_social"]),
-                Cidade = Convert.ToString(row["Cidade"]),
-                Rua = Convert.ToString(row["Rua"]),
-                Bairro = Convert.ToString(row["Bairro"]),
-                Complemento = Convert.ToString(row["Complemento"]),
-                Numero = Convert.ToInt32(row["Numero"]),
-                CEP = Convert.ToString(row["Cep"]),
-                Telefone = Convert.ToString(row["Telefone"]),
-                Celular = Convert.ToString(row["Celular"])
-            };
-            Console.WriteLine(f);
-            return f;
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
-
     }
 }
