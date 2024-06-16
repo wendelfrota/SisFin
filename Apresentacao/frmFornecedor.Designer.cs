@@ -48,25 +48,25 @@ namespace Apresentacao
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCelular = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCpfCnpj = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtCep = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtNum = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtRua = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@ namespace Apresentacao
             this.btnAltera.Location = new System.Drawing.Point(148, 427);
             this.btnAltera.Name = "btnAltera";
             this.btnAltera.Size = new System.Drawing.Size(130, 37);
-            this.btnAltera.TabIndex = 4;
+            this.btnAltera.TabIndex = 2;
             this.btnAltera.Text = "Alterar";
             this.btnAltera.UseVisualStyleBackColor = true;
             this.btnAltera.Click += new System.EventHandler(this.btnAltera_Click);
@@ -102,8 +102,8 @@ namespace Apresentacao
             this.dgFornecedor.RowHeadersWidth = 51;
             this.dgFornecedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgFornecedor.Size = new System.Drawing.Size(537, 191);
-            this.dgFornecedor.TabIndex = 5;
-            this.dgFornecedor.SelectionChanged += new System.EventHandler(this.dgCliente_SelectionChanged);
+            this.dgFornecedor.TabIndex = 0;
+            this.dgFornecedor.SelectionChanged += new System.EventHandler(this.dgFornecedor_SelectionChanged);
             // 
             // btnInclui
             // 
@@ -111,7 +111,7 @@ namespace Apresentacao
             this.btnInclui.Location = new System.Drawing.Point(12, 427);
             this.btnInclui.Name = "btnInclui";
             this.btnInclui.Size = new System.Drawing.Size(130, 37);
-            this.btnInclui.TabIndex = 4;
+            this.btnInclui.TabIndex = 1;
             this.btnInclui.Text = "Novo";
             this.btnInclui.UseVisualStyleBackColor = true;
             this.btnInclui.Click += new System.EventHandler(this.btnInclui_Click);
@@ -122,7 +122,7 @@ namespace Apresentacao
             this.btnExclui.Location = new System.Drawing.Point(284, 427);
             this.btnExclui.Name = "btnExclui";
             this.btnExclui.Size = new System.Drawing.Size(130, 37);
-            this.btnExclui.TabIndex = 4;
+            this.btnExclui.TabIndex = 3;
             this.btnExclui.Text = "Excluir";
             this.btnExclui.UseVisualStyleBackColor = true;
             this.btnExclui.Click += new System.EventHandler(this.btnExclui_Click);
@@ -134,7 +134,7 @@ namespace Apresentacao
             this.btnCancela.Location = new System.Drawing.Point(613, 427);
             this.btnCancela.Name = "btnCancela";
             this.btnCancela.Size = new System.Drawing.Size(157, 37);
-            this.btnCancela.TabIndex = 4;
+            this.btnCancela.TabIndex = 6;
             this.btnCancela.Text = "Cancelar";
             this.btnCancela.UseVisualStyleBackColor = true;
             this.btnCancela.Click += new System.EventHandler(this.btnCancela_Click);
@@ -158,7 +158,7 @@ namespace Apresentacao
             this.btnBusca.Location = new System.Drawing.Point(570, 427);
             this.btnBusca.Name = "btnBusca";
             this.btnBusca.Size = new System.Drawing.Size(37, 37);
-            this.btnBusca.TabIndex = 12;
+            this.btnBusca.TabIndex = 5;
             this.btnBusca.UseVisualStyleBackColor = true;
             this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 
@@ -169,7 +169,7 @@ namespace Apresentacao
             this.radioPessoaJuridica.Location = new System.Drawing.Point(320, 72);
             this.radioPessoaJuridica.Name = "radioPessoaJuridica";
             this.radioPessoaJuridica.Size = new System.Drawing.Size(138, 24);
-            this.radioPessoaJuridica.TabIndex = 5;
+            this.radioPessoaJuridica.TabIndex = 13;
             this.radioPessoaJuridica.TabStop = true;
             this.radioPessoaJuridica.Text = "Pessoa Jurídica";
             this.radioPessoaJuridica.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@ namespace Apresentacao
             this.radioPessoaFisica.Location = new System.Drawing.Point(119, 72);
             this.radioPessoaFisica.Name = "radioPessoaFisica";
             this.radioPessoaFisica.Size = new System.Drawing.Size(125, 24);
-            this.radioPessoaFisica.TabIndex = 4;
+            this.radioPessoaFisica.TabIndex = 12;
             this.radioPessoaFisica.TabStop = true;
             this.radioPessoaFisica.Text = "Pessoa Física";
             this.radioPessoaFisica.UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@ namespace Apresentacao
             this.txtEmail.Location = new System.Drawing.Point(69, 38);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(175, 26);
-            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TabIndex = 10;
             // 
             // label2
             // 
@@ -211,7 +211,7 @@ namespace Apresentacao
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(84, 26);
-            this.txtId.TabIndex = 9;
+            this.txtId.TabIndex = 0;
             this.txtId.TabStop = false;
             // 
             // label3
@@ -230,7 +230,7 @@ namespace Apresentacao
             this.txtNome.Location = new System.Drawing.Point(190, 6);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(333, 26);
-            this.txtNome.TabIndex = 10;
+            this.txtNome.TabIndex = 7;
             // 
             // label1
             // 
@@ -246,21 +246,22 @@ namespace Apresentacao
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Enabled = false;
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(537, 202);
-            this.tabControl1.TabIndex = 7;
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.txtCelular);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.txtTelefone);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.txtCpfCnpj);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.txtId);
             this.tabPage1.Controls.Add(this.radioPessoaJuridica);
@@ -275,7 +276,7 @@ namespace Apresentacao
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(529, 176);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Informações Gerais";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -284,9 +285,10 @@ namespace Apresentacao
             this.button1.Location = new System.Drawing.Point(6, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(517, 28);
-            this.button1.TabIndex = 19;
+            this.button1.TabIndex = 16;
             this.button1.Text = "Próximo";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -298,13 +300,13 @@ namespace Apresentacao
             this.label7.TabIndex = 18;
             this.label7.Text = "Celular:";
             // 
-            // textBox3
+            // txtCelular
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(320, 96);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(203, 26);
-            this.textBox3.TabIndex = 17;
+            this.txtCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCelular.Location = new System.Drawing.Point(320, 96);
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(203, 26);
+            this.txtCelular.TabIndex = 15;
             // 
             // label6
             // 
@@ -316,13 +318,13 @@ namespace Apresentacao
             this.label6.TabIndex = 16;
             this.label6.Text = "Telefone:";
             // 
-            // textBox2
+            // txtTelefone
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(88, 96);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(156, 26);
-            this.textBox2.TabIndex = 15;
+            this.txtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefone.Location = new System.Drawing.Point(88, 96);
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(156, 26);
+            this.txtTelefone.TabIndex = 14;
             // 
             // label5
             // 
@@ -334,13 +336,13 @@ namespace Apresentacao
             this.label5.TabIndex = 14;
             this.label5.Text = "CPF/CNPJ";
             // 
-            // textBox1
+            // txtCpfCnpj
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(340, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 26);
-            this.textBox1.TabIndex = 13;
+            this.txtCpfCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCpfCnpj.Location = new System.Drawing.Point(340, 38);
+            this.txtCpfCnpj.Name = "txtCpfCnpj";
+            this.txtCpfCnpj.Size = new System.Drawing.Size(183, 26);
+            this.txtCpfCnpj.TabIndex = 11;
             // 
             // label4
             // 
@@ -355,23 +357,23 @@ namespace Apresentacao
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.textBox9);
+            this.tabPage2.Controls.Add(this.txtCep);
             this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.textBox8);
+            this.tabPage2.Controls.Add(this.txtBairro);
             this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.textBox7);
+            this.tabPage2.Controls.Add(this.txtComplemento);
             this.tabPage2.Controls.Add(this.label16);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.txtNum);
             this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.textBox4);
+            this.tabPage2.Controls.Add(this.txtRua);
             this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.txtCidade);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(529, 176);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Endereço";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label19
@@ -384,13 +386,13 @@ namespace Apresentacao
             this.label19.TabIndex = 30;
             this.label19.Text = "CEP:";
             // 
-            // textBox9
+            // txtCep
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(320, 6);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(203, 26);
-            this.textBox9.TabIndex = 29;
+            this.txtCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCep.Location = new System.Drawing.Point(320, 6);
+            this.txtCep.Name = "txtCep";
+            this.txtCep.Size = new System.Drawing.Size(203, 26);
+            this.txtCep.TabIndex = 18;
             // 
             // label18
             // 
@@ -402,13 +404,13 @@ namespace Apresentacao
             this.label18.TabIndex = 28;
             this.label18.Text = "Bairro:";
             // 
-            // textBox8
+            // txtBairro
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(67, 38);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(456, 26);
-            this.textBox8.TabIndex = 27;
+            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBairro.Location = new System.Drawing.Point(67, 38);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(456, 26);
+            this.txtBairro.TabIndex = 19;
             // 
             // label17
             // 
@@ -420,13 +422,13 @@ namespace Apresentacao
             this.label17.TabIndex = 26;
             this.label17.Text = "Complemento:";
             // 
-            // textBox7
+            // txtComplemento
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(124, 134);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(399, 26);
-            this.textBox7.TabIndex = 25;
+            this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComplemento.Location = new System.Drawing.Point(124, 134);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(399, 26);
+            this.txtComplemento.TabIndex = 22;
             // 
             // label16
             // 
@@ -438,13 +440,13 @@ namespace Apresentacao
             this.label16.TabIndex = 24;
             this.label16.Text = "Número:";
             // 
-            // textBox6
+            // txtNum
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(81, 102);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(105, 26);
-            this.textBox6.TabIndex = 23;
+            this.txtNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNum.Location = new System.Drawing.Point(81, 102);
+            this.txtNum.Name = "txtNum";
+            this.txtNum.Size = new System.Drawing.Size(105, 26);
+            this.txtNum.TabIndex = 21;
             // 
             // label14
             // 
@@ -456,13 +458,13 @@ namespace Apresentacao
             this.label14.TabIndex = 22;
             this.label14.Text = "Rua:";
             // 
-            // textBox4
+            // txtRua
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(48, 70);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(475, 26);
-            this.textBox4.TabIndex = 21;
+            this.txtRua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRua.Location = new System.Drawing.Point(48, 70);
+            this.txtRua.Name = "txtRua";
+            this.txtRua.Size = new System.Drawing.Size(475, 26);
+            this.txtRua.TabIndex = 20;
             // 
             // label15
             // 
@@ -474,13 +476,13 @@ namespace Apresentacao
             this.label15.TabIndex = 20;
             this.label15.Text = "Cidade:";
             // 
-            // textBox5
+            // txtCidade
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(75, 6);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(187, 26);
-            this.textBox5.TabIndex = 19;
+            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCidade.Location = new System.Drawing.Point(75, 6);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(187, 26);
+            this.txtCidade.TabIndex = 17;
             // 
             // label8
             // 
@@ -503,7 +505,7 @@ namespace Apresentacao
             this.groupBox1.Location = new System.Drawing.Point(555, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(215, 399);
-            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados";
             // 
@@ -574,7 +576,7 @@ namespace Apresentacao
             this.Controls.Add(this.btnAltera);
             this.Name = "frmFornecedor";
             this.Text = "Cadastro de Fornecedor";
-            this.Load += new System.EventHandler(this.frmCliente_Load);
+            this.Load += new System.EventHandler(this.frmFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgFornecedor)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -608,10 +610,10 @@ namespace Apresentacao
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCpfCnpj;
+        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCelular;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -622,16 +624,16 @@ namespace Apresentacao
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtCep;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtNum;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtRua;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtCidade;
     }
 }

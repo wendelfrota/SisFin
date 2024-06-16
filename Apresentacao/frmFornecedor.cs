@@ -9,8 +9,8 @@ namespace Apresentacao
 {
     public partial class frmFornecedor : Form
     {
-        private readonly FornecedorService _clienteService;
-        private DataTable tblCliente = new DataTable();
+        private readonly FornecedorService _fornecedorService;
+        private DataTable tblFornecedor = new DataTable();
 
         //sinaliza qual operação está em andamento
         //0 = nada
@@ -20,7 +20,7 @@ namespace Apresentacao
         public frmFornecedor()
         {
             InitializeComponent();
-            _clienteService = new FornecedorService();
+            _fornecedorService = new FornecedorService();
 
             dgFornecedor.Columns.Add("Id", "ID");
             dgFornecedor.Columns.Add("Nome", "NOME");
@@ -33,7 +33,7 @@ namespace Apresentacao
             dgFornecedor.AllowUserToOrderColumns = true;
             dgFornecedor.ReadOnly = true;
 
-            tblCliente = _clienteService.getAll();
+            tblFornecedor = _fornecedorService.getAll();
         }
 
         private void Habilita()
@@ -46,7 +46,7 @@ namespace Apresentacao
                     btnExclui.Enabled = true;
                     btnSalva.Enabled = false;
                     btnCancela.Enabled = false;
-                    // grpDados.Enabled = false;
+                    tabControl1.Enabled = false;
                     dgFornecedor.Enabled = true;
                     break;
                 case 1: //inclusão
@@ -55,7 +55,7 @@ namespace Apresentacao
                     btnExclui.Enabled = false;
                     btnSalva.Enabled = true;
                     btnCancela.Enabled = true;
-                    // grpDados.Enabled = true;
+                    tabControl1.Enabled = true;
                     dgFornecedor.Enabled = false;
                     break;
                 case 2:
@@ -64,7 +64,7 @@ namespace Apresentacao
                     btnExclui.Enabled = false;
                     btnSalva.Enabled = true;
                     btnCancela.Enabled = true;
-                    // grpDados.Enabled = true;
+                    tabControl1.Enabled = true;
                     dgFornecedor.Enabled = false;
                     break;
              }
@@ -83,25 +83,23 @@ namespace Apresentacao
         }
 
 
-        private void frmCliente_Load(object sender, System.EventArgs e)
+        private void frmFornecedor_Load(object sender, System.EventArgs e)
         {
             radioPessoaFisica.Text = TipoPessoa.PESSOA_FISICA.ToString();
             radioPessoaJuridica.Text = TipoPessoa.PESSOA_JURIDICA.ToString();
 
-            // NOVO ====================
             dgFornecedor.ColumnCount = 4;
             dgFornecedor.AutoGenerateColumns = false;
-            dgFornecedor.Columns[0].Width = 20;
+            dgFornecedor.Columns[0].Width = 26;
             dgFornecedor.Columns[0].HeaderText = "ID";
             dgFornecedor.Columns[0].DataPropertyName = "Id";
-            //dgCliente.Columns[0].Visible = false;
-            dgFornecedor.Columns[1].Width = 275;
+            dgFornecedor.Columns[1].Width = 190;
             dgFornecedor.Columns[1].HeaderText = "NOME";
             dgFornecedor.Columns[1].DataPropertyName = "Nome";
-            dgFornecedor.Columns[2].Width = 300;
+            dgFornecedor.Columns[2].Width = 190;
             dgFornecedor.Columns[2].HeaderText = "EMAIL";
             dgFornecedor.Columns[2].DataPropertyName = "email";
-            dgFornecedor.Columns[3].Width = 100;
+            dgFornecedor.Columns[3].Width = 80;
             dgFornecedor.Columns[3].HeaderText = "TIPO";
             dgFornecedor.Columns[3].DataPropertyName = "tipoPessoa";
 
@@ -111,16 +109,15 @@ namespace Apresentacao
             dgFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             carregaGridView();
-
         }
 
         private void carregaGridView()
         {
-            dgFornecedor.DataSource = _clienteService.getAll();
+            dgFornecedor.DataSource = _fornecedorService.getAll();
             dgFornecedor.Refresh();
         }
 
-        private void dgCliente_SelectionChanged(object sender, EventArgs e)
+        private void dgFornecedor_SelectionChanged(object sender, EventArgs e)
         {
             DataGridView row = (DataGridView)sender;
             if (row.CurrentRow == null)
@@ -130,6 +127,7 @@ namespace Apresentacao
             txtId.Text = dgFornecedor.CurrentRow.Cells[0].Value.ToString();
             txtNome.Text = dgFornecedor.CurrentRow.Cells[1].Value.ToString();
             txtEmail.Text = dgFornecedor.CurrentRow.Cells[2].Value.ToString();
+
             if (dgFornecedor.CurrentRow.Cells[3].Value.ToString() == ((int)TipoPessoa.PESSOA_FISICA).ToString())
                 radioPessoaFisica.Checked = true;
             else
@@ -151,49 +149,75 @@ namespace Apresentacao
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            int id=0;
+            int id;
+            TipoPessoa tipoFornecedor;
+            string cpf_cnpj;
             string nome;
+            string rua; 
+            int numero; 
+            string bairro;
+            string cidade;
+            string complemento;
+            string cep;
+            string telefone;
+            string celular;
             string email;
             string resultado;
             string msg;
-            int regAtual = 0;
 
             if (String.IsNullOrEmpty(txtId.Text))
                 id = -1;
             else
                 id = Convert.ToInt32(txtId.Text);
 
+            tipoFornecedor = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
+            cpf_cnpj = txtCpfCnpj.Text;
             nome = txtNome.Text;
+            rua = txtRua.Text;
+            numero = Convert.ToInt32(txtNum.Text);
+            bairro = txtBairro.Text;
+            cidade = txtCidade.Text;
+            complemento = txtComplemento.Text;
+            cep = txtCep.Text;
+            telefone = txtTelefone.Text;
+            celular = txtCelular.Text;
             email = txtEmail.Text;
 
-            TipoPessoa tp = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
 
             if (modo == 1)
             {
-                resultado = _clienteService.Update(1, tp, nome, email, null, 1, null, null, null, null, null, null, null, true);
+                resultado = _fornecedorService.Update(
+                    id, tipoFornecedor, cpf_cnpj, nome, rua,
+                    numero, bairro, cidade, complemento, cep,
+                    telefone, celular, email, true
+                    );
+                
                 if (resultado == "SUCESSO")
                 {
-                    msg = "CLIENTE cadastrado com sucesso!";
+                    msg = "FORNECEDOR cadastrado com sucesso!";
                     carregaGridView();
                 }
                 else
                 {
-                    msg = "Falha ao cadastrar PRODUTO!";
+                    msg = "Falha ao cadastrar FORNECEDOR!";
                 }
+
                 MessageBox.Show(msg, "Aviso do sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (modo == 2)
             {
-                resultado = _clienteService.Update(1, tp, nome, email, null, 1, null, null, null, null, null, null, null, true);
+                resultado = _fornecedorService.Update(1, tipoFornecedor, nome, email, null, 1, null, null, null, null, null, null, null, true);
+                
                 if (resultado == "SUCESSO")
                 {
-                    msg = "CLIENTE atualizado com sucesso!";
+                    msg = "FORNECEDOR atualizado com sucesso!";
                     carregaGridView();
                  }
                 else
                 {
-                    msg = "Falha ao atualizar CLIENTE!";
+                    msg = "Falha ao atualizar FORNECEDOR!";
                 }
+
                 MessageBox.Show(msg, "Aviso do sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -208,19 +232,22 @@ namespace Apresentacao
             String msg;
             DialogResult resposta;
             resposta = MessageBox.Show("Confirma exclusão?", "Aviso do sistema!", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
             if (resposta == DialogResult.OK)
             {
-                int idCliente = Convert.ToInt32(txtId.Text);
-                resultado = _clienteService.Remove(idCliente);
+                int idFornecedor = Convert.ToInt32(txtId.Text);
+                resultado = _fornecedorService.Remove(idFornecedor);
+
                 if (resultado == "SUCESSO")
                 {
-                    msg = "CLIENTE excluido com sucesso!";
+                    msg = "FORNECEDOR excluido com sucesso!";
                     carregaGridView();
                 }
                 else
                 {
-                    msg = "Falha ao excluir CLIENTE!";
+                    msg = "Falha ao excluir FORNECEDOR!";
                 }
+
                 MessageBox.Show(msg, "Aviso do sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -235,15 +262,22 @@ namespace Apresentacao
         private void btnBusca_Click(object sender, EventArgs e)
         {
             frmPrompt f = new frmPrompt();
-            string txtBusca = "";
             f.ShowDialog();
-            txtBusca = f.Texto;
-            DataTable tbClientes = _clienteService.filterByName(txtBusca);
-            if(tbClientes!=null)
+
+            string txtBusca = f.Texto;
+
+            DataTable tbFornecedores = _fornecedorService.filterByName(txtBusca);
+
+            if(tbFornecedores != null)
             {
-                dgFornecedor.DataSource = tbClientes;
+                dgFornecedor.DataSource = tbFornecedores;
                 dgFornecedor.Refresh();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
         }
     }
 }
