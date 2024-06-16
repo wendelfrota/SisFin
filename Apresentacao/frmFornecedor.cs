@@ -57,6 +57,8 @@ namespace Apresentacao
                     btnCancela.Enabled = true;
                     tabControl1.Enabled = true;
                     dgFornecedor.Enabled = false;
+                    LimpaForm();
+                    txtNome.Focus();
                     break;
                 case 2:
                     btnInclui.Enabled = false;
@@ -76,10 +78,17 @@ namespace Apresentacao
             txtNome.Clear();
             txtEmail.Clear();
             txtId.Clear();
-            radioPessoaFisica.Checked = false;
+            radioPessoaFisica.Checked = true;
             radioPessoaJuridica.Checked = false;
-
-            txtNome.Focus();
+            txtBairro.Clear();
+            txtCelular.Clear();
+            txtCidade.Clear();
+            txtRazaoSocial.Clear();
+            txtCep.Clear();
+            txtCpfCnpj.Clear();
+            txtComplemento.Clear();
+            txtTelefone.Clear();
+            txtRua.Clear();
         }
 
 
@@ -87,16 +96,16 @@ namespace Apresentacao
         {
             dgFornecedor.ColumnCount = 4;
             dgFornecedor.AutoGenerateColumns = false;
-            dgFornecedor.Columns[0].Width = 26;
+            dgFornecedor.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgFornecedor.Columns[0].HeaderText = "ID";
             dgFornecedor.Columns[0].DataPropertyName = "Id";
-            dgFornecedor.Columns[1].Width = 190;
+            dgFornecedor.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgFornecedor.Columns[1].HeaderText = "NOME";
             dgFornecedor.Columns[1].DataPropertyName = "Nome";
-            dgFornecedor.Columns[2].Width = 190;
+            dgFornecedor.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgFornecedor.Columns[2].HeaderText = "EMAIL";
             dgFornecedor.Columns[2].DataPropertyName = "email";
-            dgFornecedor.Columns[3].Width = 80;
+            dgFornecedor.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgFornecedor.Columns[3].HeaderText = "TIPO";
             dgFornecedor.Columns[3].DataPropertyName = "tipoPessoa";
 
@@ -120,15 +129,49 @@ namespace Apresentacao
             if (row.CurrentRow == null)
                 return;
 
-            //limpa os TextBoxes
-            txtId.Text = dgFornecedor.CurrentRow.Cells[0].Value.ToString();
-            txtNome.Text = dgFornecedor.CurrentRow.Cells[1].Value.ToString();
-            txtEmail.Text = dgFornecedor.CurrentRow.Cells[2].Value.ToString();
+            switch(modo)
+            {
+                case 1: // ele selecionou alguma coisa enquanto adicionava um fornecedor, entao sairemos do modo de insercao e iremos ao modo normal
+                    LimpaForm();
+                    modo = 0;
+                    Habilita();
+                    break;
+                case 0: // ele selecionou alguma coisa enquanto apenas vizualizava as coisas, entao vamos preencher o form com os dados do fornecedor selecionado
+                    LimpaForm();
+                    preencheForm();
+                    Habilita();
+                    break;
+                case 2: // ele selecionou que quer editar alguma coisa, entao vamos carregar todos os dados
+                    LimpaForm();
+                    preencheForm();
+                    Habilita();
+                    break;
+            }
+        }
 
-            if (dgFornecedor.CurrentRow.Cells[3].Value.ToString() == ((int)TipoPessoa.PESSOA_FISICA).ToString())
+        private void preencheForm()
+        {
+            tabControl1.SelectTab(0);
+            int id = Int32.Parse(dgFornecedor.CurrentRow.Cells[0].Value.ToString());
+            DataTable dt = _fornecedorService.getById(id);
+            Fornecedor f = FornecedorService.fromDatatable(dt);
+            txtId.Text = f.Id.ToString();
+            txtNome.Text = f.Nome;
+            txtEmail.Text = f.Email;
+            txtCpfCnpj.Text = f.Cpf_cnpj;
+            txtRazaoSocial.Text = f.Razao_social;
+            txtTelefone.Text = f.Telefone;
+            txtCelular.Text = f.Celular;
+            if (f.TipoFornecedor == TipoPessoa.PESSOA_FISICA)
                 radioPessoaFisica.Checked = true;
             else
                 radioPessoaJuridica.Checked = true;
+            txtCidade.Text = f.Cidade;
+            txtCep.Text = f.CEP;
+            txtBairro.Text = f.Bairro;
+            txtRua.Text = f.Rua;
+            txtNum.Text = f.Numero.ToString();
+            txtComplemento.Text = f.Complemento;
         }
 
         private void btnAltera_Click(object sender, EventArgs e)
@@ -168,26 +211,27 @@ namespace Apresentacao
             else
                 id = Convert.ToInt32(txtId.Text);
 
+            numero = -1;
             try
             {
-                tipoFornecedor = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
-                cpf_cnpj = txtCpfCnpj.Text;
-                razao_social = txtRazaoSocial.Text;
-                nome = txtNome.Text;
-                rua = txtRua.Text;
                 numero = Convert.ToInt32(txtNum.Text);
-                bairro = txtBairro.Text;
-                cidade = txtCidade.Text;
-                complemento = txtComplemento.Text;
-                cep = txtCep.Text;
-                telefone = txtTelefone.Text;
-                celular = txtCelular.Text;
-                email = txtEmail.Text;
             }
             catch
             {
-                throw new Exception("Campo inválido");
+                MessageBox.Show("Número inválido!", "Aviso do sistema");   
             }
+            tipoFornecedor = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
+            cpf_cnpj = txtCpfCnpj.Text;
+            razao_social = txtRazaoSocial.Text;
+            nome = txtNome.Text;
+            rua = txtRua.Text;
+            bairro = txtBairro.Text;
+            cidade = txtCidade.Text;
+            complemento = txtComplemento.Text;
+            cep = txtCep.Text;
+            telefone = txtTelefone.Text;
+            celular = txtCelular.Text;
+            email = txtEmail.Text;
 
 
             if (modo == 1)
@@ -289,5 +333,6 @@ namespace Apresentacao
         {
             tabControl1.SelectedIndex = 1;
         }
+       
     }
 }

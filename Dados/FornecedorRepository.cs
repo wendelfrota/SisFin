@@ -179,6 +179,29 @@ namespace Dados
             return DtResultado;
         }
 
-
+        public DataTable getById(int id)
+        {
+            DataTable DtResultado = new DataTable("fornecedor");
+            String selectSql;
+            try
+            {
+                Connection.getConnection();
+                selectSql = String.Format("SELECT * FROM fornecedor WHERE id=@pId");
+                SqlCommand SqlCmd = new SqlCommand(selectSql, Connection.Con);
+                SqlCmd.Parameters.AddWithValue("pId", id.ToString());
+                SqlDataAdapter SqlData = new SqlDataAdapter(SqlCmd);
+                SqlData.Fill(DtResultado);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            finally
+            {
+                Connection.Con.Close();
+            }
+            return DtResultado;
+        }
     }
 }
