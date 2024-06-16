@@ -24,9 +24,7 @@ namespace Negocio
             String cidade, String complemento, String cep,
             String telefone, String celular, String email, Boolean isNew)
         {
-            // Insira as validações e regras de negócio aqui
-            // Por exemplo, verificar se o email já está cadastrado
-            var fornecedor = new Fornecedor
+                var fornecedor = new Fornecedor
             {
                 Id = id,
                 TipoFornecedor = tipoFornecedor,
@@ -44,6 +42,9 @@ namespace Negocio
                 Celular = celular
             };
 
+            if (!isValidFornecedor(fornecedor))
+                return "FALHA";
+
             if (isNew)
                 return _repository.Insert(fornecedor);
             else
@@ -53,19 +54,13 @@ namespace Negocio
 
         public string Insert(Fornecedor fornecedor)
         {
-            // Insira as validações e regras de negócio aqui
-            // Por exemplo, verificar se o email já está cadastrado
-
-            return _repository.Insert(fornecedor);
-
+            if (isValidFornecedor(fornecedor))
+                return _repository.Insert(fornecedor);
+            return "FALHA";
         }
         public string Remove(int idFornecedor)
         {
-            // Insira as validações e regras de negócio aqui
-            // Por exemplo, verificar se o email já está cadastrado
-
             return _repository.Remove(idFornecedor);
-
         }
 
         public DataTable getAll()
@@ -77,5 +72,35 @@ namespace Negocio
             return _repository.filterByName(nome);
         }
 
+        private bool isValidFornecedor(Fornecedor f)
+        {
+            if (!IsValidEmail(f.Email) || EmailExists(f.Email))
+                return false;
+            return true;
+        }
+
+        private bool EmailExists(string email)
+        {
+            var fornecedores = _repository.getAll();
+
+            foreach (DataRow row in fornecedores.Rows)
+                if (row["Email"].ToString().Equals(email, StringComparison.OrdinalIgnoreCase))
+                    return true;
+                
+            return false;
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
