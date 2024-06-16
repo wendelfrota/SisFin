@@ -7,7 +7,7 @@ using Negocio;
 
 namespace Apresentacao
 {
-    public partial class frmCliente : Form
+    public partial class frmFornecedor : Form
     {
         private readonly FornecedorService _clienteService;
         private DataTable tblCliente = new DataTable();
@@ -17,21 +17,21 @@ namespace Apresentacao
         //1 = inclusão (novo)
         //2 = alteração
         private int modo = 0; //sinaliza qual operação está em andamento
-        public frmCliente()
+        public frmFornecedor()
         {
             InitializeComponent();
             _clienteService = new FornecedorService();
 
-            dgCliente.Columns.Add("Id", "ID");
-            dgCliente.Columns.Add("Nome", "NOME");
-            dgCliente.Columns.Add("tipoPesso", "TIPO PESSOA");
-            dgCliente.Columns.Add("email", "EMAIL");
+            dgFornecedor.Columns.Add("Id", "ID");
+            dgFornecedor.Columns.Add("Nome", "NOME");
+            dgFornecedor.Columns.Add("tipoPesso", "TIPO PESSOA");
+            dgFornecedor.Columns.Add("email", "EMAIL");
 
-            dgCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgCliente.AllowUserToAddRows = false;
-            dgCliente.AllowUserToDeleteRows = false;
-            dgCliente.AllowUserToOrderColumns = true;
-            dgCliente.ReadOnly = true;
+            dgFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgFornecedor.AllowUserToAddRows = false;
+            dgFornecedor.AllowUserToDeleteRows = false;
+            dgFornecedor.AllowUserToOrderColumns = true;
+            dgFornecedor.ReadOnly = true;
 
             tblCliente = _clienteService.getAll();
         }
@@ -46,8 +46,8 @@ namespace Apresentacao
                     btnExclui.Enabled = true;
                     btnSalva.Enabled = false;
                     btnCancela.Enabled = false;
-                    grpDados.Enabled = false;
-                    dgCliente.Enabled = true;
+                    // grpDados.Enabled = false;
+                    dgFornecedor.Enabled = true;
                     break;
                 case 1: //inclusão
                     btnInclui.Enabled = false;
@@ -55,8 +55,8 @@ namespace Apresentacao
                     btnExclui.Enabled = false;
                     btnSalva.Enabled = true;
                     btnCancela.Enabled = true;
-                    grpDados.Enabled = true;
-                    dgCliente.Enabled = false;
+                    // grpDados.Enabled = true;
+                    dgFornecedor.Enabled = false;
                     break;
                 case 2:
                     btnInclui.Enabled = false;
@@ -64,8 +64,8 @@ namespace Apresentacao
                     btnExclui.Enabled = false;
                     btnSalva.Enabled = true;
                     btnCancela.Enabled = true;
-                    grpDados.Enabled = true;
-                    dgCliente.Enabled = false;
+                    // grpDados.Enabled = true;
+                    dgFornecedor.Enabled = false;
                     break;
              }
 
@@ -89,26 +89,26 @@ namespace Apresentacao
             radioPessoaJuridica.Text = TipoPessoa.PESSOA_JURIDICA.ToString();
 
             // NOVO ====================
-            dgCliente.ColumnCount = 4;
-            dgCliente.AutoGenerateColumns = false;
-            dgCliente.Columns[0].Width = 20;
-            dgCliente.Columns[0].HeaderText = "ID";
-            dgCliente.Columns[0].DataPropertyName = "Id";
+            dgFornecedor.ColumnCount = 4;
+            dgFornecedor.AutoGenerateColumns = false;
+            dgFornecedor.Columns[0].Width = 20;
+            dgFornecedor.Columns[0].HeaderText = "ID";
+            dgFornecedor.Columns[0].DataPropertyName = "Id";
             //dgCliente.Columns[0].Visible = false;
-            dgCliente.Columns[1].Width = 275;
-            dgCliente.Columns[1].HeaderText = "NOME";
-            dgCliente.Columns[1].DataPropertyName = "Nome";
-            dgCliente.Columns[2].Width = 300;
-            dgCliente.Columns[2].HeaderText = "EMAIL";
-            dgCliente.Columns[2].DataPropertyName = "email";
-            dgCliente.Columns[3].Width = 100;
-            dgCliente.Columns[3].HeaderText = "TIPO";
-            dgCliente.Columns[3].DataPropertyName = "tipoPessoa";
+            dgFornecedor.Columns[1].Width = 275;
+            dgFornecedor.Columns[1].HeaderText = "NOME";
+            dgFornecedor.Columns[1].DataPropertyName = "Nome";
+            dgFornecedor.Columns[2].Width = 300;
+            dgFornecedor.Columns[2].HeaderText = "EMAIL";
+            dgFornecedor.Columns[2].DataPropertyName = "email";
+            dgFornecedor.Columns[3].Width = 100;
+            dgFornecedor.Columns[3].HeaderText = "TIPO";
+            dgFornecedor.Columns[3].DataPropertyName = "tipoPessoa";
 
-            dgCliente.AllowUserToAddRows = false;
-            dgCliente.AllowUserToDeleteRows = false;
-            dgCliente.MultiSelect = false;
-            dgCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgFornecedor.AllowUserToAddRows = false;
+            dgFornecedor.AllowUserToDeleteRows = false;
+            dgFornecedor.MultiSelect = false;
+            dgFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             carregaGridView();
 
@@ -116,8 +116,8 @@ namespace Apresentacao
 
         private void carregaGridView()
         {
-            dgCliente.DataSource = _clienteService.getAll();
-            dgCliente.Refresh();
+            dgFornecedor.DataSource = _clienteService.getAll();
+            dgFornecedor.Refresh();
         }
 
         private void dgCliente_SelectionChanged(object sender, EventArgs e)
@@ -127,10 +127,10 @@ namespace Apresentacao
                 return;
 
             //limpa os TextBoxes
-            txtId.Text = dgCliente.CurrentRow.Cells[0].Value.ToString();
-            txtNome.Text = dgCliente.CurrentRow.Cells[1].Value.ToString();
-            txtEmail.Text = dgCliente.CurrentRow.Cells[2].Value.ToString();
-            if (dgCliente.CurrentRow.Cells[3].Value.ToString() == ((int)TipoPessoa.PESSOA_FISICA).ToString())
+            txtId.Text = dgFornecedor.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = dgFornecedor.CurrentRow.Cells[1].Value.ToString();
+            txtEmail.Text = dgFornecedor.CurrentRow.Cells[2].Value.ToString();
+            if (dgFornecedor.CurrentRow.Cells[3].Value.ToString() == ((int)TipoPessoa.PESSOA_FISICA).ToString())
                 radioPessoaFisica.Checked = true;
             else
                 radioPessoaJuridica.Checked = true;
@@ -170,7 +170,7 @@ namespace Apresentacao
 
             if (modo == 1)
             {
-                resultado = _clienteService.Update(null, tp, nome, email);
+                resultado = _clienteService.Update(1, tp, nome, email, null, 1, null, null, null, null, null, null, null, true);
                 if (resultado == "SUCESSO")
                 {
                     msg = "CLIENTE cadastrado com sucesso!";
@@ -184,7 +184,7 @@ namespace Apresentacao
             }
             else if (modo == 2)
             {
-                resultado = _clienteService.Update(id, tp, nome, email);
+                resultado = _clienteService.Update(1, tp, nome, email, null, 1, null, null, null, null, null, null, null, true);
                 if (resultado == "SUCESSO")
                 {
                     msg = "CLIENTE atualizado com sucesso!";
@@ -241,8 +241,8 @@ namespace Apresentacao
             DataTable tbClientes = _clienteService.filterByName(txtBusca);
             if(tbClientes!=null)
             {
-                dgCliente.DataSource = tbClientes;
-                dgCliente.Refresh();
+                dgFornecedor.DataSource = tbClientes;
+                dgFornecedor.Refresh();
             }
         }
     }

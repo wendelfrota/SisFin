@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dados;
-using MySql.Data.MySqlClient;
 
 namespace Negocio
 {
