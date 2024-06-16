@@ -58,20 +58,32 @@ namespace Dados
             return resp;
         }
 
-        public string Update(Fornecedor cliente)
+        public string Update(Fornecedor fornecedor)
         {
             string resp = "";
             try
             {
                 Connection.getConnection();
 
-                string updateSql = String.Format("UPDATE cliente SET " +
-                                    "Nome = @pNome, email = @pEmail " +
+                string updateSql = String.Format("UPDATE fornecedor SET " +
+                                    "tipoFornecedor=@pTipoFornecedor, cpf_cnpj=@pCpf_cnpj, razao_social=@pRazao_social," +
+                                    "nome=@pNome, rua=@pRua, numero=@pNumero, bairro=@pBairro, cidade=@pCidade, complemento=@pComplemento," +
+                                    "cep=@pCep, telefone=@pTelefone, celular=@pCelular, email=@pEmail " +
                                     "WHERE id = @pId ");
                 SqlCommand SqlCmd = new SqlCommand(updateSql, Connection.Con);
-                SqlCmd.Parameters.AddWithValue("pNome", cliente.Nome);
-                SqlCmd.Parameters.AddWithValue("pEmail", cliente.Email);
-                SqlCmd.Parameters.AddWithValue("pId", cliente.Id);
+                SqlCmd.Parameters.AddWithValue("pTipoFornecedor", fornecedor.TipoFornecedor);
+                SqlCmd.Parameters.AddWithValue("pCpf_Cnpj", fornecedor.Cpf_cnpj);
+                SqlCmd.Parameters.AddWithValue("pRazao_Social", fornecedor.Razao_social);
+                SqlCmd.Parameters.AddWithValue("pNome", fornecedor.Nome);
+                SqlCmd.Parameters.AddWithValue("pRua", fornecedor.Rua);
+                SqlCmd.Parameters.AddWithValue("pNumero", fornecedor.Numero);
+                SqlCmd.Parameters.AddWithValue("pBairro", fornecedor.Bairro);
+                SqlCmd.Parameters.AddWithValue("pCidade", fornecedor.Cidade);
+                SqlCmd.Parameters.AddWithValue("pComplemento", fornecedor.Complemento);
+                SqlCmd.Parameters.AddWithValue("pCep", fornecedor.CEP);
+                SqlCmd.Parameters.AddWithValue("pTelefone", fornecedor.Telefone);
+                SqlCmd.Parameters.AddWithValue("pCelular", fornecedor.Celular);
+                SqlCmd.Parameters.AddWithValue("pEmail", fornecedor.Email);
 
                 //executa o stored procedure
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "SUCESSO" : "FALHA";
@@ -88,17 +100,17 @@ namespace Dados
             return resp;
         }
 
-        public string Remove(int idCliente)
+        public string Remove(int idFornecedor)
         {
             string resp = "";
             try
             {
                 Connection.getConnection();
 
-                string updateSql = String.Format("DELETE FROM cliente " +
+                string updateSql = String.Format("DELETE FROM fornecedor " +
                                     "WHERE id = @pId ");
                 SqlCommand SqlCmd = new SqlCommand(updateSql, Connection.Con);
-                SqlCmd.Parameters.AddWithValue("pId", idCliente);
+                SqlCmd.Parameters.AddWithValue("pId", idFornecedor);
 
                 //executa o stored procedure
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "SUCESSO" : "FALHA";
@@ -117,11 +129,11 @@ namespace Dados
 
         public DataTable getAll()
         {
-            DataTable DtResultado = new DataTable("cliente");
+            DataTable DtResultado = new DataTable("fornecedor");
             try
             {
                 Connection.getConnection();
-                String sqlSelect = "select * from cliente";
+                String sqlSelect = "select * from fornecedor";
 
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Connection.Con;
@@ -139,19 +151,19 @@ namespace Dados
 
         public DataTable filterByName(string pNome)
         {
-            DataTable DtResultado = new DataTable("cliente");
+            DataTable DtResultado = new DataTable("fornecedor");
             string selectSql;
             try
             {
                 Connection.getConnection();
                 if (!string.IsNullOrEmpty(pNome))
                 {
-                    selectSql = String.Format("SELECT * FROM cliente WHERE nome LIKE @pNome");
+                    selectSql = String.Format("SELECT * FROM fornecedor WHERE nome LIKE @pNome");
                     pNome = '%' + pNome + '%';
                 }
                 else
                 {
-                    selectSql = String.Format("SELECT * FROM cliente");
+                    selectSql = String.Format("SELECT * FROM fornecedor");
                 }
                 SqlCommand SqlCmd = new SqlCommand(selectSql, Connection.Con);
                 if (!string.IsNullOrEmpty(pNome))
