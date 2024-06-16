@@ -23,7 +23,7 @@ namespace Dados
                 {
                     Connection = Connection.Con,
                     CommandText = "INSERT INTO fornecedor " +
-                    "(tipoFornecedor, cpf_cnpj, razao_social, nome, rua, numero, bairro, cidade, complemento, cep, telefone, celular, email) VALUES " +
+                    "(tipoPessoa, cpf_cnpj, razao_social, nome, rua, numero, bairro, cidade, complemento, cep, telefone, celular, email) VALUES " +
                     "(@pTipoFornecedor, @pCpf_cnpj, @pRazao_social, @pNome, @pRua, @pNumero, @pBairro, @pCidade, @pComplemento, @pCep, @pTelefone, @pCelular, @pEmail) "
                 };
                 SqlCmd.Parameters.AddWithValue("pTipoFornecedor", fornecedor.TipoFornecedor);
@@ -45,6 +45,7 @@ namespace Dados
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 resp = ex.Message;
             }
             finally
@@ -64,7 +65,7 @@ namespace Dados
                 Connection.getConnection();
 
                 string updateSql = String.Format("UPDATE fornecedor SET " +
-                                    "tipoFornecedor=@pTipoFornecedor, cpf_cnpj=@pCpf_cnpj, razao_social=@pRazao_social," +
+                                    "tipoPessoa=@pTipoFornecedor, cpf_cnpj=@pCpf_cnpj, razao_social=@pRazao_social," +
                                     "nome=@pNome, rua=@pRua, numero=@pNumero, bairro=@pBairro, cidade=@pCidade, complemento=@pComplemento," +
                                     "cep=@pCep, telefone=@pTelefone, celular=@pCelular, email=@pEmail " +
                                     "WHERE id = @pId ");
