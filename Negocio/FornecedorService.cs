@@ -102,5 +102,34 @@ namespace Negocio
                 return false;
             }
         }
+
+        public DataTable getById(int id)
+        {
+            return _repository.getById(id);
+        }
+
+        public static Fornecedor fromDatatable(DataTable dt)
+        {
+            DataRow row = dt.Rows[0];
+            Fornecedor f = new Fornecedor
+            {
+                Id = Convert.ToInt32(row["Id"]),
+                TipoFornecedor = (TipoPessoa)row["TipoPessoa"],
+                Nome = Convert.ToString(row["Nome"]),
+                Email = Convert.ToString(row["Email"]),
+                Cpf_cnpj = Convert.ToString(row["Cpf_cnpj"]),
+                Razao_social = Convert.ToString(row["Razao_social"]),
+                Cidade = Convert.ToString(row["Cidade"]),
+                Rua = Convert.ToString(row["Rua"]),
+                Bairro = Convert.ToString(row["Bairro"]),
+                Complemento = Convert.ToString(row["Complemento"]),
+                Numero = Convert.ToInt32(row["Numero"]),
+                CEP = Convert.ToString(row["Cep"]),
+                Telefone = Convert.ToString(row["Telefone"]),
+                Celular = Convert.ToString(row["Celular"])
+            };
+            Console.WriteLine(f);
+            return f;
+        }
     }
 }
