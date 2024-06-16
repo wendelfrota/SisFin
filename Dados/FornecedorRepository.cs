@@ -24,23 +24,8 @@ namespace Dados
                 SqlCommand SqlCmd = new SqlCommand
                 {
                     Connection = Connection.Con,
-                    CommandText = "INSERT INTO fornecedor " +
-                    "(tipoFornecedor, cpf_cnpj, razao_social, nome, rua, numero, bairro, cidade, complemento, cep, telefone, celular, email) VALUES " +
-                    "(@pTipoFornecedor, @pCpf_cnpj, @pRazao_social, @pNome, @pRua, @pNumero, @pBairro, @pCidade, @pComplemento, @pCep, @pTelefone, @pCelular, @pEmail) "
+                    CommandText = "INSERT INTO cliente (nome, email, tipoPessoa) VALUES (@pNome, @pEmail, @pTipoPessoa) "
                 };
-                SqlCmd.Parameters.AddWithValue("pTipoFornecedor", fornecedor.TipoFornecedor);
-                SqlCmd.Parameters.AddWithValue("pCpf_Cnpj", fornecedor.Cpf_cnpj);
-                SqlCmd.Parameters.AddWithValue("pRazao_Social", fornecedor.Razao_social);
-                SqlCmd.Parameters.AddWithValue("pNome", fornecedor.Nome);
-                SqlCmd.Parameters.AddWithValue("pRua", fornecedor.Rua);
-                SqlCmd.Parameters.AddWithValue("pNumero", fornecedor.Numero);
-                SqlCmd.Parameters.AddWithValue("pBairro", fornecedor.Bairro);
-                SqlCmd.Parameters.AddWithValue("pCidade", fornecedor.Cidade);
-                SqlCmd.Parameters.AddWithValue("pComplemento", fornecedor.Complemento);
-                SqlCmd.Parameters.AddWithValue("pCep", fornecedor.CEP);
-                SqlCmd.Parameters.AddWithValue("pTelefone", fornecedor.Telefone);
-                SqlCmd.Parameters.AddWithValue("pCelular", fornecedor.Celular);
-                SqlCmd.Parameters.AddWithValue("pEmail", fornecedor.Email);
 
                 //executa o stored procedure
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "SUCESSO" : "FALHA";

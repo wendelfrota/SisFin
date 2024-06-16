@@ -19,52 +19,40 @@ namespace Negocio
             _repository = new FornecedorRepository();
         }
 
-        public string Update(
-            int id, TipoPessoa tipoFornecedor, String cpf_cnpj,
-            String nome, String rua, int numero, String bairro,
-            String cidade, String complemento, String cep,
-            String telefone, String celular, String email, Boolean isNew)
+        public string Update(int? id, TipoPessoa tipoPessoa, string nome, string email)
         {
             // Insira as validações e regras de negócio aqui
             // Por exemplo, verificar se o email já está cadastrado
+
             var fornecedor = new Fornecedor
             {
-                Id = id,
-                TipoFornecedor = tipoFornecedor,
+                Id = id.Value,
+                TipoFornecedor = tipoPessoa,
                 Nome = nome,
-                Email = email,
-                Cpf_cnpj = cpf_cnpj,
-                Cidade = cidade,
-                Rua = rua,
-                Bairro = bairro,
-                Complemento = complemento,
-                Numero = numero,
-                CEP = cep,
-                Telefone = telefone,
-                Celular = celular
+                Email = email
             };
 
-            if (isNew)
+            if (id == null)
                 return _repository.Insert(fornecedor);
             else
                 return _repository.Update(fornecedor);
 
         }
 
-        public string Insert(Fornecedor fornecedor)
+        public string Insert(Fornecedor cliente)
         {
             // Insira as validações e regras de negócio aqui
             // Por exemplo, verificar se o email já está cadastrado
 
-            return _repository.Insert(fornecedor);
+            return _repository.Insert(cliente);
 
         }
-        public string Remove(int idFornecedor)
+        public string Remove(int idCliente)
         {
             // Insira as validações e regras de negócio aqui
             // Por exemplo, verificar se o email já está cadastrado
 
-            return _repository.Remove(idFornecedor);
+            return _repository.Remove(idCliente);
 
         }
 
