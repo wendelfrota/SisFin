@@ -128,7 +128,7 @@ namespace Apresentacao
             this.btnCancela.Location = new System.Drawing.Point(613, 427);
             this.btnCancela.Name = "btnCancela";
             this.btnCancela.Size = new System.Drawing.Size(157, 37);
-            this.btnCancela.TabIndex = 6;
+            this.btnCancela.TabIndex = 17;
             this.btnCancela.Text = "Cancelar";
             this.btnCancela.UseVisualStyleBackColor = true;
             this.btnCancela.Click += new System.EventHandler(this.btnCancela_Click);
@@ -140,7 +140,7 @@ namespace Apresentacao
             this.btnSalva.Location = new System.Drawing.Point(420, 427);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.Size = new System.Drawing.Size(130, 37);
-            this.btnSalva.TabIndex = 4;
+            this.btnSalva.TabIndex = 16;
             this.btnSalva.Text = "Salvar";
             this.btnSalva.UseVisualStyleBackColor = true;
             this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
@@ -163,7 +163,7 @@ namespace Apresentacao
             this.radioPessoaJuridica.Location = new System.Drawing.Point(625, 106);
             this.radioPessoaJuridica.Name = "radioPessoaJuridica";
             this.radioPessoaJuridica.Size = new System.Drawing.Size(81, 24);
-            this.radioPessoaJuridica.TabIndex = 13;
+            this.radioPessoaJuridica.TabIndex = 6;
             this.radioPessoaJuridica.Text = "Jurídica";
             this.radioPessoaJuridica.UseVisualStyleBackColor = true;
             // 
@@ -175,7 +175,7 @@ namespace Apresentacao
             this.radioPessoaFisica.Location = new System.Drawing.Point(625, 76);
             this.radioPessoaFisica.Name = "radioPessoaFisica";
             this.radioPessoaFisica.Size = new System.Drawing.Size(68, 24);
-            this.radioPessoaFisica.TabIndex = 12;
+            this.radioPessoaFisica.TabIndex = 5;
             this.radioPessoaFisica.TabStop = true;
             this.radioPessoaFisica.Text = "Física";
             this.radioPessoaFisica.UseVisualStyleBackColor = true;
@@ -186,7 +186,7 @@ namespace Apresentacao
             this.txtEmail.Location = new System.Drawing.Point(119, 38);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(225, 26);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 2;
             // 
             // label2
             // 
@@ -224,7 +224,7 @@ namespace Apresentacao
             this.txtNome.Location = new System.Drawing.Point(190, 6);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(554, 26);
-            this.txtNome.TabIndex = 7;
+            this.txtNome.TabIndex = 1;
             // 
             // label1
             // 
@@ -291,7 +291,7 @@ namespace Apresentacao
             this.txtRazaoSocial.Location = new System.Drawing.Point(119, 70);
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(404, 26);
-            this.txtRazaoSocial.TabIndex = 19;
+            this.txtRazaoSocial.TabIndex = 4;
             // 
             // button1
             // 
@@ -299,7 +299,7 @@ namespace Apresentacao
             this.button1.Location = new System.Drawing.Point(6, 142);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(738, 28);
-            this.button1.TabIndex = 16;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Próximo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -320,7 +320,7 @@ namespace Apresentacao
             this.txtCelular.Location = new System.Drawing.Point(340, 102);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(183, 26);
-            this.txtCelular.TabIndex = 15;
+            this.txtCelular.TabIndex = 8;
             // 
             // label6
             // 
@@ -338,7 +338,7 @@ namespace Apresentacao
             this.txtTelefone.Location = new System.Drawing.Point(119, 102);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(139, 26);
-            this.txtTelefone.TabIndex = 14;
+            this.txtTelefone.TabIndex = 7;
             // 
             // label5
             // 
@@ -356,7 +356,7 @@ namespace Apresentacao
             this.txtCpfCnpj.Location = new System.Drawing.Point(461, 38);
             this.txtCpfCnpj.Name = "txtCpfCnpj";
             this.txtCpfCnpj.Size = new System.Drawing.Size(283, 26);
-            this.txtCpfCnpj.TabIndex = 11;
+            this.txtCpfCnpj.TabIndex = 3;
             // 
             // label4
             // 
@@ -406,7 +406,7 @@ namespace Apresentacao
             this.txtCep.Location = new System.Drawing.Point(476, 9);
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(268, 26);
-            this.txtCep.TabIndex = 18;
+            this.txtCep.TabIndex = 11;
             // 
             // label18
             // 
@@ -424,7 +424,7 @@ namespace Apresentacao
             this.txtBairro.Location = new System.Drawing.Point(75, 41);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(323, 26);
-            this.txtBairro.TabIndex = 19;
+            this.txtBairro.TabIndex = 12;
             // 
             // label17
             // 
@@ -442,7 +442,7 @@ namespace Apresentacao
             this.txtComplemento.Location = new System.Drawing.Point(192, 138);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(399, 26);
-            this.txtComplemento.TabIndex = 22;
+            this.txtComplemento.TabIndex = 15;
             // 
             // label16
             // 
@@ -460,7 +460,7 @@ namespace Apresentacao
             this.txtNum.Location = new System.Drawing.Point(476, 73);
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(268, 26);
-            this.txtNum.TabIndex = 21;
+            this.txtNum.TabIndex = 14;
             // 
             // label14
             // 
@@ -478,7 +478,7 @@ namespace Apresentacao
             this.txtRua.Location = new System.Drawing.Point(75, 73);
             this.txtRua.Name = "txtRua";
             this.txtRua.Size = new System.Drawing.Size(323, 26);
-            this.txtRua.TabIndex = 20;
+            this.txtRua.TabIndex = 13;
             // 
             // label15
             // 
@@ -496,7 +496,7 @@ namespace Apresentacao
             this.txtCidade.Location = new System.Drawing.Point(75, 9);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(323, 26);
-            this.txtCidade.TabIndex = 17;
+            this.txtCidade.TabIndex = 10;
             // 
             // frmFornecedor
             // 

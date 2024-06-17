@@ -89,6 +89,8 @@ namespace Apresentacao
             txtComplemento.Clear();
             txtTelefone.Clear();
             txtRua.Clear();
+            txtNum.Clear();
+            tabControl1.SelectedIndex = 0;
         }
 
 
@@ -185,6 +187,7 @@ namespace Apresentacao
             modo = 1;
             Habilita();
             LimpaForm();
+            txtNome.Focus();
         }
 
         private void btnSalva_Click(object sender, EventArgs e)
@@ -218,7 +221,8 @@ namespace Apresentacao
             }
             catch
             {
-                MessageBox.Show("Número inválido!", "Aviso do sistema");   
+                MessageBox.Show("Número inválido!", "Aviso do sistema");
+                return;
             }
             tipoFornecedor = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
             cpf_cnpj = txtCpfCnpj.Text;
@@ -232,7 +236,6 @@ namespace Apresentacao
             telefone = txtTelefone.Text;
             celular = txtCelular.Text;
             email = txtEmail.Text;
-
 
             if (modo == 1)
             {
