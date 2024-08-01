@@ -42,9 +42,9 @@ namespace Apresentacao
             {
                 case 0: //neutro
                     btnInclui.Enabled = true;
-                    btnAltera.Enabled = true;
                     btnExclui.Enabled = true;
                     btnSalva.Enabled = false;
+                    btnAltera.Enabled = true;
                     btnCancela.Enabled = false;
                     tabControl1.Enabled = false;
                     dgFornecedor.Enabled = true;
@@ -137,6 +137,11 @@ namespace Apresentacao
                     LimpaForm();
                     modo = 0;
                     Habilita();
+                    if (row.RowCount == 0)
+                    {
+                        btnExclui.Enabled = false;
+                        btnAltera.Enabled = false;
+                    }
                     break;
                 case 0: // ele selecionou alguma coisa enquanto apenas vizualizava as coisas, entao vamos preencher o form com os dados do fornecedor selecionado
                     LimpaForm();
@@ -149,6 +154,7 @@ namespace Apresentacao
                     Habilita();
                     break;
             }
+            
         }
 
         private void preencheForm()
@@ -237,6 +243,16 @@ namespace Apresentacao
             celular = txtCelular.Text;
             email = txtEmail.Text;
 
+            if(cpf_cnpj == "" || razao_social == "" || nome == "" || rua == "" || bairro == "" || cidade == "" || cep == "" || telefone == "" || celular == "" || email == "")
+            {
+                MessageBox.Show("Algum campo ficou vazio! Verifique se todos eles foram preenchidos.", "Aviso do Sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if(complemento == "")
+            {
+                complemento = "Sem Complemento";
+            }
+
             if (modo == 1)
             {
                 resultado = _fornecedorService.Update(
@@ -252,7 +268,7 @@ namespace Apresentacao
                 }
                 else
                 {
-                    msg = "Falha ao cadastrar FORNECEDOR!";
+                    msg = "Falha ao cadastrar FORNECEDOR! Verifique se todos os campos estão preenchidos corretamente";
                 }
 
                 MessageBox.Show(msg, "Aviso do sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -272,7 +288,7 @@ namespace Apresentacao
                  }
                 else
                 {
-                    msg = "Falha ao atualizar FORNECEDOR!";
+                    msg = "Falha ao atualizar FORNECEDOR! Verifique se todos os campos estão preenchidos corretamente";
                 }
 
                 MessageBox.Show(msg, "Aviso do sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);

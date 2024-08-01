@@ -152,7 +152,7 @@ namespace Apresentacao
             this.btnBusca.Location = new System.Drawing.Point(570, 427);
             this.btnBusca.Name = "btnBusca";
             this.btnBusca.Size = new System.Drawing.Size(37, 37);
-            this.btnBusca.TabIndex = 5;
+            this.btnBusca.TabIndex = 17;
             this.btnBusca.UseVisualStyleBackColor = true;
             this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 

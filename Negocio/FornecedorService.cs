@@ -43,7 +43,10 @@ namespace Negocio
             };
 
             if (!isValidFornecedor(fornecedor))
+            {
+                Console.WriteLine("Falha por validação");
                 return "FALHA";
+            }
 
             if (isNew)
                 return _repository.Insert(fornecedor);
@@ -75,19 +78,28 @@ namespace Negocio
         private bool isValidFornecedor(Fornecedor f)
         {
             if (!IsValidEmail(f.Email) || EmailExists(f.Email))
+            {
+                Console.WriteLine("email exists: " + EmailExists(f.Email) + "; isValidEmail: " + IsValidEmail(f.Email));
                 return false;
+            }
             return true;
         }
 
         private bool EmailExists(string email)
         {
             var fornecedores = _repository.getAll();
+            int entries = 0;
 
             foreach (DataRow row in fornecedores.Rows)
+            {
                 if (row["Email"].ToString().Equals(email, StringComparison.OrdinalIgnoreCase))
-                    return true;
-                
-            return false;
+                {
+                    entries++;
+                }
+            }
+
+            return entries > 1;
+           
         }
 
         private bool IsValidEmail(string email)
@@ -110,6 +122,10 @@ namespace Negocio
 
         public static Fornecedor fromDatatable(DataTable dt)
         {
+            if(dt.Rows.Count == 0)
+            {
+                return new Fornecedor();
+            }
             DataRow row = dt.Rows[0];
             Fornecedor f = new Fornecedor
             {
