@@ -4,6 +4,9 @@ using System.Data;
 using System.Windows.Forms;
 using Dados;
 using Negocio;
+using FluentValidation;
+using FluentValidation.Results;
+using System.Linq;
 
 namespace Apresentacao
 {
@@ -11,6 +14,7 @@ namespace Apresentacao
     {
         private readonly FornecedorService _fornecedorService;
         private DataTable tblFornecedor = new DataTable();
+        private readonly FornecedorValidator _fornecedorValidator;
 
         //sinaliza qual operação está em andamento
         //0 = nada
@@ -21,6 +25,8 @@ namespace Apresentacao
         {
             InitializeComponent();
             _fornecedorService = new FornecedorService();
+            _fornecedorValidator = new FornecedorValidator();
+            
 
             dgFornecedor.Columns.Add("Id", "ID");
             dgFornecedor.Columns.Add("Nome", "NOME");
@@ -230,6 +236,7 @@ namespace Apresentacao
                 MessageBox.Show("Número inválido!", "Aviso do sistema");
                 return;
             }
+
             tipoFornecedor = radioPessoaFisica.Checked ? TipoPessoa.PESSOA_FISICA : TipoPessoa.PESSOA_JURIDICA;
             cpf_cnpj = txtCpfCnpj.Text;
             razao_social = txtRazaoSocial.Text;
@@ -243,11 +250,41 @@ namespace Apresentacao
             celular = txtCelular.Text;
             email = txtEmail.Text;
 
-            if(cpf_cnpj == "" || razao_social == "" || nome == "" || rua == "" || bairro == "" || cidade == "" || cep == "" || telefone == "" || celular == "" || email == "")
+            Fornecedor f = new Fornecedor
             {
-                MessageBox.Show("Algum campo ficou vazio! Verifique se todos eles foram preenchidos.", "Aviso do Sistema!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Id = id,
+                TipoFornecedor = tipoFornecedor,
+                Nome = nome,
+                Email = email,
+                Cpf_cnpj = cpf_cnpj,
+                Razao_social = razao_social,
+                Cidade = cidade,
+                Rua = rua,
+                Bairro = bairro,
+                Complemento = complemento,
+                Numero = numero,
+                CEP = cep,
+                Telefone = telefone,
+                Celular = celular
+            };
+
+
+            ValidationResult result = _fornecedorValidator.Validate(f);
+            
+            if(!result.IsValid)
+            {
+                ValidationFailure finalFailure = result.Errors.First();
+                MessageBox.Show(finalFailure.ErrorMessage, "Erro do sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                foreach (var failure in result.Errors)
+                {
+                    Console.WriteLine("FluentValidation Error: " + failure.ErrorMessage);
+                }
+
                 return;
             }
+
+
             if(complemento == "")
             {
                 complemento = "Sem Complemento";
