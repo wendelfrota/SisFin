@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dados;
+using FluentValidation;
 
 namespace Negocio
 {
@@ -75,16 +76,6 @@ namespace Negocio
             return _repository.filterByName(nome);
         }
 
-        private bool isValidFornecedor(Fornecedor f)
-        {
-            if (!IsValidEmail(f.Email) || EmailExists(f.Email))
-            {
-                Console.WriteLine("email exists: " + EmailExists(f.Email) + "; isValidEmail: " + IsValidEmail(f.Email));
-                return false;
-            }
-            return true;
-        }
-
         private bool EmailExists(string email)
         {
             var fornecedores = _repository.getAll();
@@ -99,7 +90,6 @@ namespace Negocio
             }
 
             return entries > 1;
-           
         }
 
         private bool IsValidEmail(string email)
