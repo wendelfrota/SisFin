@@ -43,11 +43,6 @@ namespace Negocio
                 Celular = celular
             };
 
-            if (!isValidFornecedor(fornecedor))
-            {
-                Console.WriteLine("Falha por validação");
-                return "FALHA";
-            }
 
             if (isNew)
                 return _repository.Insert(fornecedor);
@@ -58,10 +53,14 @@ namespace Negocio
 
         public string Insert(Fornecedor fornecedor)
         {
-            if (isValidFornecedor(fornecedor))
-                return _repository.Insert(fornecedor);
-            return "FALHA";
+            return _repository.Insert(fornecedor);
         }
+
+        public string Update(Fornecedor f)
+        {
+            return _repository.Update(f);
+        }
+
         public string Remove(int idFornecedor)
         {
             return _repository.Remove(idFornecedor);
@@ -74,35 +73,6 @@ namespace Negocio
         public DataTable filterByName(string nome)
         {
             return _repository.filterByName(nome);
-        }
-
-        private bool EmailExists(string email)
-        {
-            var fornecedores = _repository.getAll();
-            int entries = 0;
-
-            foreach (DataRow row in fornecedores.Rows)
-            {
-                if (row["Email"].ToString().Equals(email, StringComparison.OrdinalIgnoreCase))
-                {
-                    entries++;
-                }
-            }
-
-            return entries > 1;
-        }
-
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         public DataTable getById(int id)
