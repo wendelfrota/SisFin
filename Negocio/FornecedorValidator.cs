@@ -48,14 +48,16 @@ namespace Negocio
         private bool EmailExists(string email)
         {
             var fornecedores = _repository.getAll();
-            foreach (DataRow row in fornecedores.Rows)
+            if (fornecedores != null)
             {
-                if (row["Email"].ToString().Equals(email, StringComparison.OrdinalIgnoreCase) && !row["Id"].ToString().Equals(currentFornecedorId.ToString()))
+                foreach (DataRow row in fornecedores.Rows)
                 {
-                    return false;
+                    if (row["Email"].ToString().Equals(email, StringComparison.OrdinalIgnoreCase) && !row["Id"].ToString().Equals(currentFornecedorId.ToString()))
+                    {
+                        return false;
+                    }
                 }
             }
-
             return true;
 
         }
