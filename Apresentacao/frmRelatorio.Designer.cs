@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.databaseDataSet1 = new Apresentacao.DatabaseDataSet1();
             this.fornecedorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet1 = new Apresentacao.DatabaseDataSet1();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.fornecedorTableAdapter = new Apresentacao.DatabaseDataSet1TableAdapters.FornecedorTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // fornecedorBindingSource
+            // 
+            this.fornecedorBindingSource.DataMember = "Fornecedor";
+            this.fornecedorBindingSource.DataSource = this.databaseDataSet1;
+            // 
+            // databaseDataSet1
+            // 
+            this.databaseDataSet1.DataSetName = "DatabaseDataSet1";
+            this.databaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -51,16 +61,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // databaseDataSet1
-            // 
-            this.databaseDataSet1.DataSetName = "DatabaseDataSet1";
-            this.databaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fornecedorBindingSource
-            // 
-            this.fornecedorBindingSource.DataMember = "Fornecedor";
-            this.fornecedorBindingSource.DataSource = this.databaseDataSet1;
-            // 
             // fornecedorTableAdapter
             // 
             this.fornecedorTableAdapter.ClearBeforeFill = true;
@@ -74,8 +74,8 @@
             this.Name = "frmRelatorio";
             this.Text = "Relatorio";
             this.Load += new System.EventHandler(this.Relatorio_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }

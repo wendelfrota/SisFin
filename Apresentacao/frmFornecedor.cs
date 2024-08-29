@@ -316,13 +316,19 @@ namespace Apresentacao
                     id, tipoFornecedor, cpf_cnpj, razao_social, nome, rua,
                     numero, bairro, cidade, complemento, cep,
                     telefone, celular, email, false
-                    );
+                );
+
+                if (resultado == "EMAIL_EXISTE")
+                {
+                    Console.WriteLine("Email já existe");
+                    msg = "Falha ao cadastrar! Email já cadastrado no sistema";
+                }
 
                 if (resultado == "SUCESSO")
                 {
                     msg = "FORNECEDOR atualizado com sucesso!";
                     carregaGridView();
-                 }
+                }
                 else
                 {
                     msg = "Falha ao atualizar FORNECEDOR! Verifique se todos os campos estão preenchidos corretamente";

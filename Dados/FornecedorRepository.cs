@@ -179,6 +179,50 @@ namespace Dados
             return DtResultado;
         }
 
+        public string VerifyEmail(string email, int? id)
+        {
+
+            string resp = "";
+
+            try
+            {
+                Connection.getConnection();
+                string selectSql = "SELECT Id FROM Fornecedor WHERE email = @pEmail";
+                SqlCommand SqlCmd = new SqlCommand(selectSql, Connection.Con);
+                SqlCmd.Parameters.AddWithValue("@pEmail", email);
+                var result = SqlCmd.ExecuteScalar();
+                if (result != null)
+                {
+                    int idbd = Convert.ToInt32(result);
+
+                    if (id.HasValue && id == idbd)
+                    {
+                        resp = "NAO";
+                    }
+                    else
+                    {
+                        resp = "SIM";
+                    }
+                }
+                else
+                {
+                    resp = "NAO";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                resp = ex.Message;
+            }
+            finally
+            {
+                if (Connection.Con.State == ConnectionState.Open)
+                { Connection.Con.Close(); }
+            }
+             
+            return resp;
+        }
+
         public DataTable getById(int id)
         {
             DataTable DtResultado = new DataTable("fornecedor");

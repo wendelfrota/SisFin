@@ -43,6 +43,10 @@ namespace Negocio
                 Celular = celular
             };
 
+            if(_repository.VerifyEmail(email, id) == "SIM")
+            {
+                return "EMAIL_EXISTE";
+            }
 
             if (isNew)
                 return _repository.Insert(fornecedor);
