@@ -19,6 +19,8 @@ namespace Apresentacao
 
         private void Relatorio_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'databaseDataSet1.Fornecedor'. Você pode movê-la ou removê-la conforme necessário.
+            this.fornecedorTableAdapter.Fill(this.databaseDataSet1.Fornecedor);
 
             this.reportViewer1.RefreshReport();
         }
