@@ -24,6 +24,7 @@ namespace Negocio
             mgr.Culture = CultureInfo.GetCultureInfo("pt-BR");
             ValidatorOptions.Global.LanguageManager = mgr;
 
+            RuleFor(fornecedor => fornecedor.Nome).NotNull().NotEmpty().Length(1, 50);
             RuleFor(fornecedor => fornecedor.Numero).NotNull().NotEmpty();
             RuleFor(fornecedor => fornecedor.Cpf_cnpj).NotNull().NotEmpty().Length(11, 18).WithMessage("O campo CPF/CNPJ está invalido!");
             RuleFor(fornecedor => fornecedor.Email).NotNull().NotEmpty().EmailAddress().WithMessage("O email fornecido e invalido");

@@ -396,14 +396,39 @@ namespace Apresentacao
             tabControl1.SelectedIndex = 1;
         }
 
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sobreToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Alunos:\nMiguel Cyrineu Vale\t\tRA: 203001\nWendel Tolentino Alves Frota\tRA: 203243", "Sobre");
+        }
+
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new frmRelatorio().Show();
         }
 
-        private void sobreToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Alunos:\nMiguel Cyrineu Vale\t\tRA: 203001\nWendel Tolentino Alves Frota\tRA: 203243", "Sobre");
+            DialogResult result = MessageBox.Show("Deseja sair do SisFin?", "Exit", MessageBoxButtons.YesNo);
+
+            if(result == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Em desenvolvimento...", "Indisponível");
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fornecedorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

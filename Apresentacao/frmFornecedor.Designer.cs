@@ -35,7 +35,6 @@ namespace Apresentacao
             this.btnExclui = new System.Windows.Forms.Button();
             this.btnCancela = new System.Windows.Forms.Button();
             this.btnSalva = new System.Windows.Forms.Button();
-            this.btnBusca = new System.Windows.Forms.Button();
             this.radioPessoaJuridica = new System.Windows.Forms.RadioButton();
             this.radioPessoaFisica = new System.Windows.Forms.RadioButton();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -69,14 +68,11 @@ namespace Apresentacao
             this.txtRua = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBusca = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgFornecedor)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAltera
@@ -94,12 +90,12 @@ namespace Apresentacao
             // 
             this.dgFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgFornecedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgFornecedor.Location = new System.Drawing.Point(12, 236);
+            this.dgFornecedor.Location = new System.Drawing.Point(12, 220);
             this.dgFornecedor.Name = "dgFornecedor";
             this.dgFornecedor.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgFornecedor.RowHeadersWidth = 51;
             this.dgFornecedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgFornecedor.Size = new System.Drawing.Size(758, 175);
+            this.dgFornecedor.Size = new System.Drawing.Size(758, 191);
             this.dgFornecedor.TabIndex = 0;
             this.dgFornecedor.SelectionChanged += new System.EventHandler(this.dgFornecedor_SelectionChanged);
             // 
@@ -148,17 +144,6 @@ namespace Apresentacao
             this.btnSalva.Text = "Salvar";
             this.btnSalva.UseVisualStyleBackColor = true;
             this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
-            // 
-            // btnBusca
-            // 
-            this.btnBusca.BackgroundImage = global::Apresentacao.Properties.Resources.lupa;
-            this.btnBusca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBusca.Location = new System.Drawing.Point(570, 427);
-            this.btnBusca.Name = "btnBusca";
-            this.btnBusca.Size = new System.Drawing.Size(37, 37);
-            this.btnBusca.TabIndex = 17;
-            this.btnBusca.UseVisualStyleBackColor = true;
-            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 
             // radioPessoaJuridica
             // 
@@ -245,7 +230,7 @@ namespace Apresentacao
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Enabled = false;
-            this.tabControl1.Location = new System.Drawing.Point(12, 28);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(758, 202);
@@ -502,30 +487,16 @@ namespace Apresentacao
             this.txtCidade.Size = new System.Drawing.Size(323, 26);
             this.txtCidade.TabIndex = 10;
             // 
-            // menuStrip1
+            // btnBusca
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sobreToolStripMenuItem,
-            this.sobreToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(782, 24);
-            this.menuStrip1.TabIndex = 18;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // sobreToolStripMenuItem
-            // 
-            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.sobreToolStripMenuItem.Text = "Relatório";
-            this.sobreToolStripMenuItem.Click += new System.EventHandler(this.sobreToolStripMenuItem_Click);
-            // 
-            // sobreToolStripMenuItem1
-            // 
-            this.sobreToolStripMenuItem1.Name = "sobreToolStripMenuItem1";
-            this.sobreToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
-            this.sobreToolStripMenuItem1.Text = "Sobre";
-            this.sobreToolStripMenuItem1.Click += new System.EventHandler(this.sobreToolStripMenuItem1_Click);
+            this.btnBusca.BackgroundImage = global::Apresentacao.Properties.Resources.lupa;
+            this.btnBusca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBusca.Location = new System.Drawing.Point(570, 427);
+            this.btnBusca.Name = "btnBusca";
+            this.btnBusca.Size = new System.Drawing.Size(37, 37);
+            this.btnBusca.TabIndex = 17;
+            this.btnBusca.UseVisualStyleBackColor = true;
+            this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
             // 
             // frmFornecedor
             // 
@@ -541,8 +512,6 @@ namespace Apresentacao
             this.Controls.Add(this.btnSalva);
             this.Controls.Add(this.btnExclui);
             this.Controls.Add(this.btnAltera);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmFornecedor";
             this.Text = "Cadastro de Fornecedor";
             this.Load += new System.EventHandler(this.frmFornecedor_Load);
@@ -552,10 +521,7 @@ namespace Apresentacao
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -600,8 +566,5 @@ namespace Apresentacao
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.TextBox txtRazaoSocial;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem1;
     }
 }
