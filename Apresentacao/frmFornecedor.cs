@@ -322,9 +322,10 @@ namespace Apresentacao
                 {
                     Console.WriteLine("Email já existe");
                     msg = "Falha ao cadastrar! Email já cadastrado no sistema";
-                }
+                    LimpaForm();
+                    preencheForm();
 
-                if (resultado == "SUCESSO")
+                } else if (resultado == "SUCESSO")
                 {
                     msg = "FORNECEDOR atualizado com sucesso!";
                     carregaGridView();
